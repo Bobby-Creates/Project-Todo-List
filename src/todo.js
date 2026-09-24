@@ -10,11 +10,14 @@ class todo {
         this.description = description,
         this.dueDate = dueDate,
         this.notes = notes;
+       
     }
+  
+    
 }
 
-function newTodo(){
-
+function newTodo(a, b, c,d,e){
+    new todo(a, b, c,d,e,)
+    
+ 
 }
- 
- 
