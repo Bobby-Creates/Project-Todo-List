@@ -84,5 +84,26 @@ fieldset  > div {
     padding: 0.34vw;
 }
 .TDC{
+    display:flex;
+    flex-flow: column wrap;
+    overflow: hidden;
     margin-bottom: 2vw;
+    
+}
+.TDC > div{
+    display:flex;
+  
+}
+.TDC:empty{
+    margin-bottom: 2vw;
+    color:blanchedalmond;
+    border-color: blueviolet;
+}
+legend:first-child{
+    color:turquoise;
+}
+.gray{
+    color: gray;
+    background-color: gray;
+    border-color: gray;
 }
