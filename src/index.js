@@ -77,7 +77,7 @@ window.addEventListener("load", event => {
                      
 
 
-                  if (true){
+                  if (recheck()){
                            let projectW = document.createElement("fieldset");
                            let projectWL = document.createElement("legend");
                         projectWL.textContent=storage[0].project 

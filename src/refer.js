@@ -37,7 +37,7 @@ function rewrite(){
 
 }
 function recheck(){
-    if(localStorage.getItem("todo").project !== null  && localStorage.getItem("todo").project !== undefined ){
+    if (storage[0].project !== null  && storage[0].project !== undefined ){
         return true
     }
     else{
