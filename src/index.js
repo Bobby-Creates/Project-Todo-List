@@ -1,9 +1,10 @@
 export {inputBox, send, inputSee,projectMal}
 import "./todo.css"
-import {newTodo, todo} from "./todo.js"
+
 import {labelName, basis, rewrite, todos,recheck, revise, storage} from "./refer.js"
 import {save} from "./project.js"
 import { compareAsc, format } from "date-fns"
+import { normalizeOptions } from "css-loader/dist/utils.js"
 
 
 let projectMal = document.querySelectorAll("legend:first-child")
@@ -109,10 +110,10 @@ window.addEventListener("load", event => {
         title.textContent = `${labelName[0]}: ${prompt("Choose a title")}`
        })
           dueDate.addEventListener("click", event => {
-          dueDate.textContent = `${labelName[2]}: ${prompt("Choose a Due Date")}`
+          dueDate.textContent = `${labelName[1]}: ${prompt("Choose a Due Date")}`
        })
         description.addEventListener("click", event => {
-        description.textContent = `${labelName[1]}: ${prompt("Choose a description")}`
+        description.textContent = `${labelName[2]}: ${prompt("Choose a description")}`
        })
         notes.addEventListener("click", event => {
         notes.textContent = `${labelName[4]}: ${prompt("Choose a Note")}`
@@ -125,27 +126,55 @@ window.addEventListener("load", event => {
         title.addEventListener("contextmenu", event => {
           event.preventDefault()
           title.style.color ="blue"
+           title.classList.add("complete");
+           if(priority.classList.contains("complete")& dueDate.classList.contains("complete")& notes.classList.contains("complete")& description.classList.contains("complete") & title.classList.contains("complete")){
+            console.log("yes")
+            todoDivCon.classList.add("gray")
+            
+        }
        })
           dueDate.addEventListener("contextmenu", event => {
              event.preventDefault()
           dueDate.style.color ="blue"
+          dueDate.classList.add("complete");
+          if(priority.classList.contains("complete")& dueDate.classList.contains("complete")& notes.classList.contains("complete")& description.classList.contains("complete") & title.classList.contains("complete")){
+            console.log("yes")
+            todoDivCon.remove()
+        }
        })
         description.addEventListener("contextmenu", event => {
            event.preventDefault()
           description.style.color ="blue"
-       })
+          description.classList.add("complete");
+          if(priority.classList.contains("complete")& dueDate.classList.contains("complete")& notes.classList.contains("complete")& description.classList.contains("complete") & title.classList.contains("complete")){
+            console.log("yes")
+            todoDivCon.remove()}
+        })
         notes.addEventListener("contextmenu", event => {
            event.preventDefault()
           notes.style.color ="blue"
+          notes.classList.add("complete");
+          if(priority.classList.contains("complete")& dueDate.classList.contains("complete")& notes.classList.contains("complete")& description.classList.contains("complete") & title.classList.contains("complete")){
+            console.log("yes")
+           todoDivCon.remove()
+        }
        })
         priority.addEventListener("contextmenu", event => {
           event.preventDefault()
           priority.style.color ="blue"
+          priority.classList.add("complete");
+          if(priority.classList.contains("complete")& dueDate.classList.contains("complete")& notes.classList.contains("complete")& description.classList.contains("complete") & title.classList.contains("complete")){
+            console.log("yes")
+            todoDivCon.remove()
+        }
        })
+
         todoDivCon.addEventListener("dblclick", event => {
          
           todoDivCon.remove()
         })
+        
+        
         
         
          }

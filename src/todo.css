@@ -107,6 +107,8 @@ legend:first-child{
     background-color: gray;
     border-color: gray;
 }
-.priority{
-    color : rgb(calc((pi*pi*3*100),calc(3*100),calc(3*100*10)));
+.complete{
+    background: lightgreen;
+    border-radius:5px;
+    border-color:blueviolet;
 }

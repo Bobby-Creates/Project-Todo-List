@@ -1,5 +1,5 @@
 export {labelName, basis, rewrite, todos, recheck, revise, storage}
-import { send, inputSee, toad, projectMal } from "./index.js";
+import { send, inputSee, projectMal } from "./index.js";
 
 
 let labelName= ["Title", "DueDate","Description","Priority", "Notes", "Project"]
