@@ -54,7 +54,7 @@ dialog > div{
     flex-flow: wrap;
     border-radius: 2vw;
     border: 1vw  rgb(10, 91, 116) solid;
-    gap:2vw;
+    gap:1vw;
 }
 
 .project{
@@ -106,4 +106,7 @@ legend:first-child{
     color: gray;
     background-color: gray;
     border-color: gray;
+}
+.priority{
+    color : rgb(calc((pi*pi*3*100),calc(3*100),calc(3*100*10)));
 }

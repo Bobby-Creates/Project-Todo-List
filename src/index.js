@@ -1,7 +1,7 @@
 export {inputBox, send, inputSee,projectMal}
 import "./todo.css"
 import {newTodo, todo} from "./todo.js"
-import {labelName, basis, rewrite, todos,recheck, revise} from "./refer.js"
+import {labelName, basis, rewrite, todos,recheck, revise, storage} from "./refer.js"
 import {save} from "./project.js"
 import { compareAsc, format } from "date-fns"
 
@@ -44,7 +44,7 @@ let send = document.createElement("button")
 dialog.appendChild(send);
 let changeDialog = document.createElement("dialog")
 container.appendChild(changeDialog)
-
+ 
 
 //the goal of index.js is to inital the first page and provide access to the others
 //as well as defining document queryselectors for the others 
@@ -53,8 +53,8 @@ window.addEventListener("load", event => {
    
       (function (){
        
-         console.log(todos.length);
-               for(let i of JSON.parse(localStorage.getItem("todo"))){
+         
+               for(let i of storage){
                      console.log(JSON.parse(localStorage.getItem("todo")))
 
                      let todoDivCon = document.createElement("div");
@@ -64,22 +64,23 @@ window.addEventListener("load", event => {
                console.log(JSON.parse((localStorage.getItem("todo"))))
                console.log(JSON.parse(localStorage.getItem("todo"))[0].title)
                console.log("")
-               title.textContent= `${labelName[0]}:${JSON.parse(localStorage.getItem("todo"))[0].title}`;
+               title.textContent= `${labelName[0]}:${storage[0].title}`;
                let dueDate = document.createElement("div");
-               dueDate.textContent= `${labelName[2]}:${JSON.parse(localStorage.getItem("todo"))[0].dueDate}`;
+               dueDate.textContent= `${labelName[1]}:${storage[0].dueDate}`;
                let description = document.createElement("div");
-               description.textContent= `${labelName[1]}:${JSON.parse(localStorage.getItem("todo"))[0].description}`;
+               description.textContent= `${labelName[2]}:${storage[0].description}`;
                let notes = document.createElement("div");
-               notes.textContent= `${labelName[4]}:${JSON.parse(localStorage.getItem("todo"))[0].notes}`
+               notes.textContent= `${labelName[4]}:${storage[0].notes}`
                let priority = document.createElement("div")
-               priority.textContent= `${labelName[3]}:${JSON.parse(localStorage.getItem("todo"))[0].priority}`;
-             
+               priority.classList.add("priority")
+               priority.textContent= `${labelName[3]}:${storage[0].priority}`;
+                     
 
 
-                  if (recheck()){
+                  if (true){
                            let projectW = document.createElement("fieldset");
                            let projectWL = document.createElement("legend");
-                        projectW.textContent=localStorage.getItem("todo").project 
+                        projectWL.textContent=storage[0].project 
                         projectW.appendChild(projectWL);
                         projectW.classList.add("project");
                         container.appendChild(projectW);
@@ -99,10 +100,7 @@ window.addEventListener("load", event => {
                      todoDivCon.appendChild(notes);
                      todoDivCon.appendChild(priority);
                   }
-                  if(revise()){
-                     JSON.parse(localStorage.getItem("todo")).title = "beautif"
-                  }
-
+                  
 
 
 
@@ -148,9 +146,7 @@ window.addEventListener("load", event => {
          
           todoDivCon.remove()
         })
-        if (Array.from(todoDivConSons).every.sty){
-            todoDivCon.classList.add("gray")
-        }
+        
         
          }
       })();
@@ -158,19 +154,26 @@ window.addEventListener("load", event => {
 
 buttonTodo.addEventListener("click", event => {
     dialog.showModal()
-  
+         
     for(let i=0; i<6; i++){
+         
+         
         let label = document.createElement("label")
          let input = document.createElement("input")
+          console.log(input.type)
+        console.log(input.parentNode)
+         input.classList.add("inputTypes");
+         
         inputBox.appendChild(label)
      label.textContent = labelName[i] + ":"
-    inputBox.appendChild(input)
-     
-    
    
+    inputBox.appendChild(input)
 
- }
-
+ }  
+    let inputFind = document.querySelectorAll("div >dialog > div > input")
+    console.log(inputFind)
+    inputFind[1].type = "date"
+   
    send.addEventListener("click", event=> {
              
              inputSee = document.querySelectorAll("dialog > div>input");
@@ -185,13 +188,14 @@ buttonTodo.addEventListener("click", event => {
          let title = document.createElement("div");
          title.textContent= `${labelName[0]}:${inputSee[0].value}`;
          let dueDate = document.createElement("div");
-         dueDate.textContent= `${labelName[2]}:${new Date(inputSee[1].value)}`;
+         dueDate.textContent= `${labelName[1]}:${new Date(inputSee[1].value)}`;
          let description = document.createElement("div");
-         description.textContent= `${labelName[1]}:${inputSee[2].value}`;
+         description.textContent= `${labelName[2]}:${inputSee[2].value}`;
          let notes = document.createElement("div");
          notes.textContent= `${labelName[3]}:${inputSee[3].value}`
          let priority = document.createElement("div")
          priority.textContent= `${labelName[4]}:${inputSee[4].value}`;
+        
           let search = document.querySelectorAll("fieldset > legend");
         
          rewrite();

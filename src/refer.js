@@ -1,9 +1,10 @@
-export {labelName, basis, rewrite, todos, recheck, revise}
+export {labelName, basis, rewrite, todos, recheck, revise, storage}
 import { send, inputSee, toad, projectMal } from "./index.js";
 
 
-let labelName= ["Title", "Description","DueDate","Priority", "Notes", "Project"]
+let labelName= ["Title", "DueDate","Description","Priority", "Notes", "Project"]
 let todos = []
+let storage = JSON.parse(localStorage.getItem("todo"))
 
 class basis{
     constructor( title, dueDate, description, notes, priority, project){
@@ -16,6 +17,11 @@ class basis{
 
 }
 }
+
+
+
+
+
 
 function rewrite(){
 
